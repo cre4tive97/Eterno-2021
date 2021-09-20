@@ -1,4 +1,4 @@
-# vue-todo
+# portfolio
 
 ## Project setup
 ```
