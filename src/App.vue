@@ -1,25 +1,16 @@
 <template>
-  <transition-group :name="fadeOut">
-    <router-view></router-view>
-  </transition-group>
+  <router-view></router-view>
 </template>
 
 <script>
+import background from "./images/background.jpg";
 export default {
   name: "App",
   data() {
     return {
       fadeOut: "",
+      background: background,
     };
-  },
-  watch: {
-    $route(to) {
-      if (to.path === "/login") {
-        this.fadeOut = "fadeout1";
-      } else if (to.path === "/home") {
-        this.fadeOut = "fadeout2";
-      }
-    },
   },
 };
 </script>
@@ -48,15 +39,5 @@ body {
 }
 h1 {
   margin: 0;
-}
-
-.fadeout1-leave-from {
-  opacity: 1;
-}
-.fadeout1-leave-active {
-  transition: opacity 1s;
-}
-.fadeout1-leave-to {
-  opacity: 0;
 }
 </style>

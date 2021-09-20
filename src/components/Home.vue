@@ -2,7 +2,11 @@
   <div class="home-main" :style="{ backgroundImage: `url(${background})` }">
     <Introduce v-if="localStorageCheck == null" />
     <div class="window-div" v-for="(a, i) in apps" :key="i">
-      <Window v-show="windowState == i" @closeWindow="windowState = -1" />
+      <Window
+        v-show="windowState == i"
+        @closeWindow="windowState = -1"
+        :i="i"
+      />
     </div>
     <div class="home-apps">
       <div

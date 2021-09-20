@@ -1,9 +1,5 @@
 <template>
-  <div
-    v-show="carouselState == 0"
-    class="carousel"
-    :class="{ carouselAnimation: true }"
-  >
+  <div v-show="carouselState == 0" class="carousel">
     <div class="carousel-box">
       <div v-for="(a, i) in carouselData" :key="i">
         <div v-show="carouselContentCount == i" class="carousel-content">
@@ -15,17 +11,6 @@
           <button @click="carouselCheck">Next</button>
         </div>
       </div>
-      <!-- <div v-show="carouselContentCount == 1" class="carousel-content">
-        <h1>Click the apps!</h1>
-        <p>
-          You can open apps just with clicking app's icon like macOS. <br />
-          I hope you get nice experiences!<br />
-        </p>
-        <button @click="carouselContentCount++">Next</button>
-      </div>
-      <div v-show="carouselContentCount == 2" class="carousel-content">
-        컨텐츠3
-      </div> -->
     </div>
   </div>
 </template>

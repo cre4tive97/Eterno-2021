@@ -69,6 +69,7 @@ export default {
   height: 100vh;
   font-family: SDGothicNeoM;
   background-size: cover;
+  z-index: 1;
 }
 .default-intro__text:hover {
   cursor: pointer;

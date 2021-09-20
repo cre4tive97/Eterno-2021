@@ -8,17 +8,24 @@
           <button class="btn btn-green"></button>
         </div>
       </div>
+      <Safari v-show="i == 1" />
     </div>
   </div>
 </template>
 
 <script>
+import Safari from "./Safari.vue";
 export default {
   name: "Window",
   data() {
     return {};
   },
-  props: {},
+  props: {
+    i: Number,
+  },
+  components: {
+    Safari,
+  },
 };
 </script>
 
