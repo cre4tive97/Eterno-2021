@@ -61,6 +61,8 @@ export default {
   flex-direction: column;
   align-items: center;
   position: relative;
+  max-width: 400px;
+  width: 60%;
 }
 
 .google__form i {
@@ -71,7 +73,7 @@ export default {
 }
 
 .google__input {
-  width: 400px;
+  width: 100%;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 2rem;
