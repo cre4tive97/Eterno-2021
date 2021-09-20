@@ -62,13 +62,13 @@ export default {
   align-items: center;
   position: relative;
   max-width: 400px;
-  width: 60%;
+  width: 50%;
 }
 
 .google__form i {
   position: absolute;
   top: 0.8rem;
-  left: 1rem;
+  left: -1.7rem;
   color: rgba(255, 255, 255, 0.5);
 }
 
