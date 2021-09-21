@@ -11,6 +11,11 @@
       <div v-show="inputEmptyCheck == 1" class="google__alert">
         <span>Input is empty.</span>
       </div>
+      <div class="google__alert" v-show="searchStatus > 0">
+        <span
+          >{{ searchStatus }}초 후,{{ inputData }}의 검색결과가 열립니다.</span
+        >
+      </div>
 
       <button class="google__btn" @click="openGoogleResult">Google 검색</button>
     </form>
@@ -24,6 +29,7 @@ export default {
     return {
       inputData: "",
       inputEmptyCheck: 0,
+      searchStatus: 0,
     };
   },
   methods: {
@@ -33,7 +39,11 @@ export default {
     openGoogleResult(e) {
       e.preventDefault();
       if (this.inputData !== "") {
-        window.open(`https://www.google.com/search?q=${this.inputData}`);
+        this.searchStatus = 2;
+        setTimeout(() => {
+          window.open(`https://www.google.com/search?q=${this.inputData}`);
+          this.searchStatus = 0;
+        }, 2000);
       } else {
         this.inputEmptyCheck = 1;
         setTimeout(() => {
@@ -67,7 +77,7 @@ export default {
 
 .google__form i {
   position: absolute;
-  top: 0.8rem;
+  top: 0.85rem;
   left: -1.7rem;
   color: rgba(255, 255, 255, 0.5);
 }
