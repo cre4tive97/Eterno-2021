@@ -28,6 +28,12 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "SFMonoRegular";
+  src: url(./fonts/SFMonoRegular.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 #app {
   font-family: SDGothicNeoM, SDCothicNeoT;
   -webkit-font-smoothing: antialiased;

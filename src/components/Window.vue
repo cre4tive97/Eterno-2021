@@ -10,6 +10,7 @@
       </div>
       <Safari v-show="i == 1" />
       <Setting v-show="i == 3" />
+      <Terminal v-show="i == 6" />
     </div>
   </div>
 </template>
@@ -17,6 +18,7 @@
 <script>
 import Setting from "./Setting.vue";
 import Safari from "./Safari.vue";
+import Terminal from "./Terminal.vue";
 export default {
   name: "Window",
   data() {
@@ -28,6 +30,7 @@ export default {
   components: {
     Safari,
     Setting,
+    Terminal,
   },
 };
 </script>
