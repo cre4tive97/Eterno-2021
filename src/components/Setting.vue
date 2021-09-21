@@ -42,6 +42,7 @@ export default {
 <style>
 .setting {
   width: 100%;
+  margin-top: 3rem;
 }
 .setting__ul {
   list-style: none;

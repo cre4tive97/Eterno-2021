@@ -8,9 +8,9 @@
           <button class="btn btn-green"></button>
         </div>
       </div>
-      <Safari v-show="i == 1" />
-      <Setting v-show="i == 3" />
-      <Terminal v-show="i == 6" />
+      <Safari v-if="i == 1" />
+      <Setting v-if="i == 3" />
+      <Terminal v-if="i == 6" />
     </div>
   </div>
 </template>
@@ -58,6 +58,7 @@ export default {
   width: 100%;
   height: 2.5rem;
   background: transparent;
+  position: fixed;
 }
 .window-btn-group {
   margin-left: 10px;

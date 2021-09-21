@@ -5,9 +5,16 @@
       <br />
       <br />
       <span style="color : #055C9D">~</span>
-      <br />
-      <div v-for="(a, i) in terminalInputData" :key="i">
-        <span>{{ a }}</span>
+      <div
+        class="terminal__result"
+        v-for="(a, i) in terminalInputData"
+        :key="i"
+      >
+        <span style="color : tomato">> {{ a }}</span
+        ><br />
+        <span>command not found : {{ a }}</span
+        ><br />
+        <br />
       </div>
       <div class="terminal__form">
         <span style="color : #FA26A0">></span>
@@ -31,7 +38,7 @@ export default {
     return {
       getDate: new Date(),
       getTerminalInputValue: "",
-      terminalCommand: [],
+      terminalCommand: ["/?"],
       terminalInputData: [],
     };
   },
@@ -40,10 +47,9 @@ export default {
       e.preventDefault();
       if (this.terminalCommand.includes(this.getTerminalInputValue) == true) {
         this.terminalInputData.push(this.getTerminalInputValue);
-        e.target.value = "";
       } else {
         this.terminalInputData.push(this.getTerminalInputValue);
-        console.log(this.terminalInputData);
+        this.getTerminalInputValue = "";
       }
     },
   },
@@ -53,6 +59,7 @@ export default {
 <style>
 .terminal {
   font-family: "SFMonoRegular";
+  margin-top: 3rem;
 }
 .terminal__content {
   padding: 0px 14px;
@@ -61,6 +68,7 @@ export default {
   font-size: 0.8rem;
   font-weight: 800;
 }
+
 .terminal__form {
   display: flex;
   align-items: center;
@@ -78,5 +86,8 @@ export default {
 }
 .terminal__input:focus {
   outline: none;
+}
+.terminal__result span {
+  margin-bottom: 14px;
 }
 </style>
