@@ -9,11 +9,13 @@
         </div>
       </div>
       <Safari v-show="i == 1" />
+      <Setting v-show="i == 3" />
     </div>
   </div>
 </template>
 
 <script>
+import Setting from "./Setting.vue";
 import Safari from "./Safari.vue";
 export default {
   name: "Window",
@@ -25,6 +27,7 @@ export default {
   },
   components: {
     Safari,
+    Setting,
   },
 };
 </script>
