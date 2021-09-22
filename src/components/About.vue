@@ -6,7 +6,10 @@
           <img src="profile.jpg" alt="profile" />
         </div>
         <p class="about__profile__name">Jaemun Choi | cre4tive97</p>
-        <p class="about__profile__motto">Lighter, Faster</p>
+        <p class="about__profile__motto">Be a programmer, not a coder</p>
+      </div>
+      <div class="about__skills">
+        <h4>Skills</h4>
       </div>
     </div>
   </div>
@@ -24,6 +27,7 @@ p {
 }
 .about {
   margin-top: 50px;
+  color: white;
 }
 .about__content {
   display: flex;
@@ -44,20 +48,18 @@ p {
   width: 100%;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
   margin-bottom: 1rem;
 }
 
 .about__profile__name {
   font-size: 1.5rem;
-  color: white;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 .about__profile__motto {
   font-size: 1rem;
   font-family: "AppleSDGothicNeoH";
-  color: white;
   font-weight: 300;
 }
 </style>
