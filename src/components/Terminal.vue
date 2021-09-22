@@ -15,6 +15,7 @@
         <span>command not found : {{ a }}</span
         ><br />
         <br />
+        <span style="color : #055C9D">~</span>
       </div>
       <div class="terminal__form">
         <span style="color : #FA26A0">></span>
@@ -40,13 +41,15 @@ export default {
       getTerminalInputValue: "",
       terminalCommand: ["/?"],
       terminalInputData: [],
+      terminalCommandData: ["command is on maintainence..."],
+      terminalCommandSuccess: [],
     };
   },
   methods: {
     terminalHandleSubmit(e) {
       e.preventDefault();
       if (this.terminalCommand.includes(this.getTerminalInputValue) == true) {
-        this.terminalInputData.push(this.getTerminalInputValue);
+        this.getTerminalInputValue = "";
       } else {
         this.terminalInputData.push(this.getTerminalInputValue);
         this.getTerminalInputValue = "";
@@ -80,8 +83,7 @@ export default {
   color: white;
   font-family: "SFMonoRegular";
   font-weight: 800;
-  width: 70%;
-  max-width: 800px;
+  width: 300px;
   font-size: 0.8rem;
 }
 .terminal__input:focus {

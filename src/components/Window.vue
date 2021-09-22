@@ -48,7 +48,7 @@ export default {
 .window-box {
   max-width: 1000px;
   width: 60%;
-  height: 60vh;
+  height: 65vh;
   background: #262c32;
   border-radius: 12px;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.6);
