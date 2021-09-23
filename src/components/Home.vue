@@ -8,7 +8,7 @@
         :i="i"
       />
     </div>
-    <div class="home-apps">
+    <div class="home-apps" :class="{ homeFadeIn: homeFadeIn }">
       <div
         v-for="(a, i) in apps"
         :key="i"
@@ -35,6 +35,7 @@ export default {
   },
   data() {
     return {
+      homeFadeIn: false,
       localStorageCheck: localStorage.getItem("check"),
       background: background,
       icons: ["project", "safari", "message", "setting", "about", "todolist"],
@@ -53,6 +54,9 @@ export default {
   },
   methods: {},
   mounted() {
+    setTimeout(() => {
+      this.homeFadeIn = true;
+    }, 0);
     if (localStorage.getItem("check") == null) {
       localStorage.setItem("check", 1);
       // v-if="localStorageCheck == null" Introduce에 넣기
@@ -72,6 +76,8 @@ export default {
 }
 
 .home-apps {
+  opacity: 0;
+  transition: all 0.5s;
   z-index: 2;
   width: 600px;
   height: 300px;
@@ -120,6 +126,9 @@ export default {
 }
 .home-transition-enter-to {
   transform: translateY(0px);
+  opacity: 1;
+}
+.homeFadeIn {
   opacity: 1;
 }
 </style>

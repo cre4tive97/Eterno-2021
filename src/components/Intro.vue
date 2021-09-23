@@ -4,7 +4,7 @@
     class="default-intro"
     :style="{ backgroundImage: `url(${background})` }"
   >
-    <div class="greeting">
+    <div class="greeting" :class="{ introFadeOut: introLeave }">
       <div class="greeting__box" v-for="(a, i) in greetingText" :key="i">
         <transition name="greetingAnimation">
           <h1 v-show="greetingCount == i" class="greeting__text">
@@ -14,7 +14,7 @@
       </div>
       <transition name="textAnimation">
         <p
-          @click="$router.push('/login')"
+          @click="goToLogin"
           v-if="defaultTextCount == 1"
           class="default-intro__text"
         >
@@ -36,9 +36,17 @@ export default {
       background: background,
       defaultTextCount: 0,
       routeAnimation: "",
+      introLeave: false,
     };
   },
-
+  methods: {
+    goToLogin() {
+      this.introLeave = true;
+      setTimeout(() => {
+        this.$router.push("/login");
+      }, 500);
+    },
+  },
   mounted() {
     this.greetingCount = 0;
     setInterval(() => {
@@ -90,6 +98,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s;
 }
 .greeting__text {
   margin: 0;
@@ -131,5 +140,8 @@ export default {
 .textAnimation-enter-to {
   opacity: 1;
   transform: translateY(0px);
+}
+.introFadeOut {
+  opacity: 0;
 }
 </style>

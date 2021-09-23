@@ -4,12 +4,15 @@
     class="default-intro"
     :style="{ backgroundImage: `url(${background})` }"
   >
-    <div class="intro-login">
+    <div
+      class="intro-login"
+      :class="{ loginFadeOut: loginState, loginFadeIn: loginFadeIn }"
+    >
       <div class="intro-login__imgbox">
         <img src="profile.jpg" alt="profile" />
       </div>
       <h1 class="intro-login__username">Harry Borrison</h1>
-      <button @click="$router.push('/Home')" class="intro-login__button">
+      <button @click="login" class="intro-login__button">
         Login
       </button>
     </div>
@@ -23,13 +26,30 @@ export default {
   data() {
     return {
       background: background,
+      loginFadeIn: false,
+      loginState: false,
     };
+  },
+  methods: {
+    login() {
+      this.loginState = true;
+      setTimeout(() => {
+        this.$router.push("/home");
+      }, 500);
+    },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loginFadeIn = true;
+    }, 0);
   },
 };
 </script>
 
 <style>
 .intro-login {
+  transition: all 0.5s;
+  opacity: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -61,5 +81,12 @@ export default {
 .intro-login__button:hover {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.5);
+}
+.loginFadeIn {
+  opacity: 1;
+}
+
+.loginFadeOut {
+  opacity: 0;
 }
 </style>
