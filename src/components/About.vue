@@ -6,10 +6,23 @@
           <img src="profile.jpg" alt="profile" />
         </div>
         <p class="about__profile__name">Jaemun Choi | cre4tive97</p>
-        <p class="about__profile__motto">Be a programmer, not a coder</p>
+        <p class="about__profile__motto">Be a programmer, not a coder.</p>
       </div>
       <div class="about__skills">
-        <h4>Skills</h4>
+        <h4 class="about__skills__title">Skills</h4>
+        <div class="about__skills__skillset">
+          <div
+            v-for="(a, i) in skillsetData"
+            :key="i"
+            class="about__skills__item"
+          >
+            <span
+              class="about__skills__icon"
+              :style="{ background: skillsetData[i].color }"
+            ></span>
+            <p class="about__skills__text">{{ skillsetData[i].name }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -18,6 +31,17 @@
 <script>
 export default {
   name: "About",
+  data() {
+    return {
+      skillsetData: [
+        { name: "HTML5", color: "#FF5F57" },
+        { name: "CSS3", color: "#264BDD" },
+        { name: "JavaScript", color: "#F1DE50" },
+        { name: "Vue.js", color: "#65B485" },
+        { name: "Node.js", color: "#92C84A" },
+      ],
+    };
+  },
 };
 </script>
 
@@ -28,6 +52,7 @@ p {
 .about {
   margin-top: 50px;
   color: white;
+  width: 100%;
 }
 .about__content {
   display: flex;
@@ -61,5 +86,48 @@ p {
   font-size: 1rem;
   font-family: "AppleSDGothicNeoH";
   font-weight: 300;
+}
+.about__skills {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.about__skills__title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.about__skills__skillset {
+  display: flex;
+  justify-content: center;
+  margin: 0 10rem;
+  flex-wrap: wrap;
+}
+.about__skills__item {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+.about__skills__item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+.about__skills__icon {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+  top: -1px;
+}
+.about__skills__text {
+  font-family: "AppleSDGothicNeoH";
+  font-weight: 400;
+  font-size: 1rem;
 }
 </style>
