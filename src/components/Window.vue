@@ -11,6 +11,7 @@
       <Safari v-if="i == 1" />
       <Setting v-if="i == 3" />
       <About v-if="i == 4" />
+      <Todolist v-if="i == 5" />
       <Terminal v-if="i == 6" />
     </div>
   </div>
@@ -21,6 +22,7 @@ import Setting from "./Setting.vue";
 import Safari from "./Safari.vue";
 import Terminal from "./Terminal.vue";
 import About from "./About.vue";
+import Todolist from "./Todolist.vue";
 export default {
   name: "Window",
   data() {
@@ -34,6 +36,7 @@ export default {
     Setting,
     Terminal,
     About,
+    Todolist,
   },
 };
 </script>
