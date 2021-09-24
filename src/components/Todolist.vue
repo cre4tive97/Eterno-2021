@@ -143,6 +143,7 @@ export default {
       this.createTodolistState = false;
       e.target.parentNode.parentNode.childNodes[1].value = "";
       localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
+      this.todolistEmptyCheck = false;
     },
     deleteTodolistAll(e) {
       e.preventDefault();
@@ -158,6 +159,10 @@ export default {
       this.savedTodolist = [...selected];
       localStorage.removeItem("todolist");
       localStorage.setItem("todolist", JSON.stringify(selected));
+      if (selected.length == 0) {
+        localStorage.removeItem("todolist");
+        this.todolistEmptyCheck = true;
+      }
     },
   },
   mounted() {
