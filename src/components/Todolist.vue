@@ -29,7 +29,9 @@
     <button @click="createTodolistState = true" class="todolist__create">
       <i class="fas fa-plus-circle"></i>
     </button>
-    <button class="todolist__delete"><i class="far fa-trash-alt"></i></button>
+    <button class="todolist__delete" @click="deleteTodolistState = true">
+      <i class="far fa-trash-alt"></i>
+    </button>
     <form class="todolist__create__form" v-show="createTodolistState == true">
       <span class="todolist__create__header">새로운 할 일</span>
       <input
@@ -69,6 +71,30 @@
         </button>
       </div>
     </form>
+    <!-- delete form -->
+    <form class="todolist__delete__form" v-show="deleteTodolistState == true">
+      <button
+        class="todolist__delete__btn todolist__delete__selected"
+        @click="deleteTodolistSelected"
+      >
+        선택한 할 일 삭제
+      </button>
+      <button
+        class="todolist__delete__btn todolist__delete__all"
+        @click="deleteTodolistAll"
+      >
+        전체 삭제
+      </button>
+      <button
+        class="todolist__delete__btn todolist__delete__cancel"
+        @click="
+          $event.preventDefault();
+          deleteTodolistState = false;
+        "
+      >
+        닫기
+      </button>
+    </form>
   </div>
 </template>
 
@@ -79,8 +105,9 @@ export default {
     return {
       savedTodolist: [],
       createTodolistState: false,
+      deleteTodolistState: false,
       createTodolistInputValue: "",
-      createTodolistColorValue: "",
+      createTodolistColorValue: "#FFFFFF",
     };
   },
   methods: {
@@ -97,9 +124,6 @@ export default {
       this.createTodolistInputValue = e.target.value;
     },
     getCreateTodolistColorValue(e) {
-      if (this.createTodolistColorValue == "") {
-        this.createTodolistColorValue = "#FFFFFF";
-      }
       this.createTodolistColorValue = e.target.value;
     },
     createTodolistSubmit(e) {
@@ -115,7 +139,20 @@ export default {
       this.createTodolistState = false;
       e.target.parentNode.parentNode.childNodes[1].value = "";
       localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
-      e.target.parentNode.parentNode.childNodes[2].value = "#FFFFFF";
+    },
+    deleteTodolistAll(e) {
+      e.preventDefault();
+      this.savedTodolist = [];
+      localStorage.removeItem("todolist");
+    },
+    deleteTodolistSelected(e) {
+      e.preventDefault();
+      let selected = this.savedTodolist.filter(
+        (a, i) => this.savedTodolist[i].checked == false
+      );
+      this.savedTodolist = [...selected];
+      localStorage.removeItem("todolist");
+      localStorage.setItem("todolist", JSON.stringify(selected));
     },
   },
   mounted() {
@@ -250,6 +287,7 @@ li {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   color: white;
+  min-width: 50px;
   width: 30%;
   margin: auto;
   padding: 4px 0;
@@ -276,5 +314,36 @@ li {
 }
 .checkboxAnimation-leave-to {
   opacity: 0;
+}
+.todolist__delete__form {
+  width: 20%;
+  height: 120px;
+  box-sizing: border-box;
+  padding: 1rem 1.5rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background: #2e343a;
+  position: fixed;
+  bottom: 20%;
+  right: 25%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+}
+.todolist__delete__btn {
+  background: transparent;
+  border-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: white;
+  min-width: 50px;
+  padding: 4px 0;
+  margin: 4px 0;
+  transition: all 0.3s;
+}
+.todolist__delete__btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 </style>
