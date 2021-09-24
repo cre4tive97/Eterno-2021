@@ -8,13 +8,15 @@
         :key="i"
       >
         <div class="todolist__content__group">
-          <div
-            class="todolist__content__checkbox"
-            :class="{
-              todolist__content__checkbox__checked: savedTodolist[i].checked,
-            }"
-            @click="checkTodolist(i)"
-          ></div>
+          <div class="todolist__content__checkbox" @click="checkTodolist(i)">
+            <transition-group name="checkboxAnimation">
+              <div
+                :style="{ background: savedTodolist[i].color }"
+                v-if="savedTodolist[i].checked == true"
+                class="todolist__content__checkbox__checked"
+              ></div>
+            </transition-group>
+          </div>
           <span class="todolist__content__title">{{
             savedTodolist[i].title
           }}</span>
@@ -36,6 +38,22 @@
         placeholder="ex) Go to gym"
         @input="getCreateTodolistInputValue"
       />
+      <div>
+        <label
+          class="todolist__create__color__label"
+          style="font-size : 0.8rem"
+          for="color"
+          >컬러를 선택하세요.</label
+        >
+        <input
+          class="todolist__create__color"
+          type="color"
+          value="#FFFFFF"
+          @input="getCreateTodolistColorValue"
+          name="color"
+          id="color"
+        />
+      </div>
       <div class="todolist__create__btnGroup">
         <button class="todolist__create__submit" @click="createTodolistSubmit">
           Submit
@@ -62,18 +80,27 @@ export default {
       savedTodolist: [],
       createTodolistState: false,
       createTodolistInputValue: "",
+      createTodolistColorValue: "",
     };
   },
   methods: {
     checkTodolist(i) {
       if (this.savedTodolist[i].checked == false) {
         this.savedTodolist[i].checked = true;
+        localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
       } else {
         this.savedTodolist[i].checked = false;
+        localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
       }
     },
     getCreateTodolistInputValue(e) {
       this.createTodolistInputValue = e.target.value;
+    },
+    getCreateTodolistColorValue(e) {
+      if (this.createTodolistColorValue == "") {
+        this.createTodolistColorValue = "#FFFFFF";
+      }
+      this.createTodolistColorValue = e.target.value;
     },
     createTodolistSubmit(e) {
       e.preventDefault();
@@ -82,16 +109,19 @@ export default {
         title: this.createTodolistInputValue,
         date: `${date.getMonth()}/${date.getDate()}`,
         checked: false,
-        color: "white",
+        color: this.createTodolistColorValue,
       };
       this.savedTodolist.push(newTodolist);
       this.createTodolistState = false;
       e.target.parentNode.parentNode.childNodes[1].value = "";
       localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
+      e.target.parentNode.parentNode.childNodes[2].value = "#FFFFFF";
     },
   },
   mounted() {
-    this.savedTodolist.push(...JSON.parse(localStorage.getItem("todolist")));
+    if (localStorage.getItem("todolist") !== null) {
+      this.savedTodolist.push(...JSON.parse(localStorage.getItem("todolist")));
+    }
   },
 };
 </script>
@@ -127,13 +157,20 @@ li {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   margin-right: 1rem;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .todolist__content__checkbox:hover {
   cursor: pointer;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .todolist__content__checkbox__checked {
-  background: white;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  position: relative;
+  right: 1.5px;
+  bottom: 1px;
 }
 .todolist__content__group {
   display: flex;
@@ -167,7 +204,7 @@ li {
 }
 .todolist__create__form {
   width: 30%;
-  height: 130px;
+  height: 160px;
   box-sizing: border-box;
   padding: 1rem 1.5rem;
   border-radius: 0.8rem;
@@ -179,10 +216,7 @@ li {
   display: flex;
   flex-direction: column;
 }
-.todolist__create__closeBtn:hover {
-  background: #9c3131;
-  cursor: pointer;
-}
+
 .todolist__create__header {
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -191,11 +225,24 @@ li {
   background: transparent;
   border-style: none;
   color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .todolist__create__input:focus {
   outline: none;
+}
+.todolist__create__color {
+  background-color: transparent;
+  border-style: none;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 1rem;
+}
+.todolist__create__color:hover {
+  cursor: pointer;
+}
+.todolist__create__color__label:hover {
+  cursor: pointer;
 }
 .todolist__create__submit,
 .todolist__create__cancel {
@@ -216,5 +263,18 @@ li {
 .todolist__create__btnGroup {
   display: flex;
   justify-content: space-between;
+}
+.checkboxAnimation-enter-from {
+  opacity: 0;
+}
+.checkboxAnimation-enter-active,
+.checkboxAnimation-leave-active {
+  transition: all 0.2s;
+}
+.checkboxAnimation-enter-to {
+  opacity: 1;
+}
+.checkboxAnimation-leave-to {
+  opacity: 0;
 }
 </style>
