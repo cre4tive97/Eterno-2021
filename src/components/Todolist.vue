@@ -87,7 +87,11 @@ export default {
       this.savedTodolist.push(newTodolist);
       this.createTodolistState = false;
       e.target.parentNode.parentNode.childNodes[1].value = "";
+      localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
     },
+  },
+  mounted() {
+    this.savedTodolist.push(...JSON.parse(localStorage.getItem("todolist")));
   },
 };
 </script>
