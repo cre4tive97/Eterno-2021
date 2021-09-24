@@ -26,6 +26,9 @@
         >
       </li>
     </div>
+    <p class="todolist__emptyAlert" v-show="todolistEmptyCheck">
+      할 일 목록이 비어 있습니다. + 아이콘을 눌러 추가해보세요!
+    </p>
     <button @click="createTodolistState = true" class="todolist__create">
       <i class="fas fa-plus-circle"></i>
     </button>
@@ -108,6 +111,7 @@ export default {
       deleteTodolistState: false,
       createTodolistInputValue: "",
       createTodolistColorValue: "#FFFFFF",
+      todolistEmptyCheck: true,
     };
   },
   methods: {
@@ -144,6 +148,7 @@ export default {
       e.preventDefault();
       this.savedTodolist = [];
       localStorage.removeItem("todolist");
+      this.todolistEmptyCheck = true;
     },
     deleteTodolistSelected(e) {
       e.preventDefault();
@@ -158,6 +163,7 @@ export default {
   mounted() {
     if (localStorage.getItem("todolist") !== null) {
       this.savedTodolist.push(...JSON.parse(localStorage.getItem("todolist")));
+      this.todolistEmptyCheck = false;
     }
   },
 };
@@ -345,5 +351,9 @@ li {
 .todolist__delete__btn:hover {
   background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
+}
+.todolist__emptyAlert {
+  position: absolute;
+  margin-left: 1.5rem;
 }
 </style>
