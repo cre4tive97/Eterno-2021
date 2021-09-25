@@ -4,14 +4,16 @@
       <h1>Contact me!</h1>
     </div>
     <div class="contact__content">
-      <div
+      <a
+        target="_blank"
+        :href="contactData[i].address"
         v-for="(a, i) in contactData"
         :key="i"
         class="contact__content__item"
       >
         <i :class="contactData[i].icon"></i>
         <p class="contact__content__text">{{ contactData[i].text }}</p>
-      </div>
+      </a>
     </div>
   </div>
 </template>
@@ -22,13 +24,53 @@ export default {
   data() {
     return {
       contactData: [
-        { icon: "fab fa-github-square", text: "Github" },
-        { icon: "fas fa-cube", text: "Blog" },
-        { icon: "fas fa-envelope", text: "Email" },
+        {
+          icon: "fab fa-github",
+          text: "Github",
+          address: "https://github.com/cre4tive97",
+        },
+        {
+          icon: "fas fa-cube",
+          text: "Blog",
+          address: "https://harry97.tistory.com/",
+        },
+        { icon: "fas fa-envelope", text: "harryborrison5148@gmail.com" },
       ],
     };
   },
 };
 </script>
 
-<style></style>
+<style>
+a {
+  text-decoration: none;
+  color: white;
+}
+.contact {
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.contact__title {
+  margin-bottom: 2rem;
+  width: 100%;
+  text-align: center;
+}
+.contact__content__item {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.5s;
+}
+.contact__content__item:hover {
+  cursor: pointer;
+  transform: scale(110%);
+}
+.contact__content__item i {
+  margin-right: 1rem;
+}
+</style>
