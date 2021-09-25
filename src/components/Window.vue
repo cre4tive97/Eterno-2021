@@ -14,6 +14,7 @@
       <About v-if="i == 4" />
       <Todolist v-if="i == 5" />
       <Terminal v-if="i == 6" />
+      <Instagram v-if="i == 7" />
     </div>
   </div>
 </template>
@@ -25,6 +26,7 @@ import Terminal from "./Terminal.vue";
 import About from "./About.vue";
 import Todolist from "./Todolist.vue";
 import Contact from "./Contact.vue";
+import Instagram from "./Instagram.vue";
 export default {
   name: "Window",
   data() {
@@ -40,6 +42,7 @@ export default {
     About,
     Todolist,
     Contact,
+    Instagram,
   },
 };
 </script>
