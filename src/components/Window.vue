@@ -9,6 +9,7 @@
         </div>
       </div>
       <Safari v-if="i == 1" />
+      <Contact v-if="i == 2" />
       <Setting v-if="i == 3" />
       <About v-if="i == 4" />
       <Todolist v-if="i == 5" />
@@ -23,6 +24,7 @@ import Safari from "./Safari.vue";
 import Terminal from "./Terminal.vue";
 import About from "./About.vue";
 import Todolist from "./Todolist.vue";
+import Contact from "./Contact.vue";
 export default {
   name: "Window",
   data() {
@@ -37,6 +39,7 @@ export default {
     Terminal,
     About,
     Todolist,
+    Contact,
   },
 };
 </script>

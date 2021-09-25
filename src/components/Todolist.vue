@@ -343,7 +343,6 @@ li {
   right: 25%;
   display: flex;
   flex-direction: column;
-
   justify-content: space-around;
 }
 .todolist__delete__btn {
@@ -376,6 +375,35 @@ li {
     width: 80%;
     bottom: 20%;
     position: fixed;
+  }
+  .todolist__create__form {
+    width: 30%;
+    height: 160px;
+    box-sizing: border-box;
+    padding: 1rem 1.5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background: #2e343a;
+    position: fixed;
+    bottom: 20%;
+    left: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+  .todolist__delete__form {
+    width: 20%;
+    height: 120px;
+    box-sizing: border-box;
+    padding: 1rem 1.5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background: #2e343a;
+    position: fixed;
+    bottom: 20%;
+    right: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }
 </style>
