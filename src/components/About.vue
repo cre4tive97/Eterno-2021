@@ -2,7 +2,12 @@
   <div class="about">
     <div class="about__content">
       <div class="about__profile">
-        <div class="about__profile__image">
+        <div
+          class="about__profile__image"
+          :class="{
+            about__profile__imageAnimation: about__profile__imageAnimation,
+          }"
+        >
           <img src="profile.jpg" alt="profile" />
         </div>
         <p class="about__profile__name">Jaemun Choi | cre4tive97</p>
@@ -39,8 +44,17 @@ export default {
         { name: "JavaScript", color: "#F1DE50" },
         { name: "Vue.js", color: "#65B485" },
         { name: "Node.js", color: "#92C84A" },
+        { name: "Express", color: "#353535" },
+        { name: "Sass", color: "#C66595" },
+        { name: "Python", color: "#2F6492" },
       ],
+      about__profile__imageAnimation: false,
     };
+  },
+  beforeMount() {
+    setTimeout(() => {
+      this.about__profile__imageAnimation = true;
+    }, 0);
   },
 };
 </script>
@@ -68,6 +82,9 @@ p {
 .about__profile__image {
   width: 70%;
   max-width: 400px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s;
 }
 .about__profile__image img {
   width: 100%;
@@ -129,5 +146,9 @@ p {
   font-family: "AppleSDGothicNeoH";
   font-weight: 400;
   font-size: 1rem;
+}
+.about__profile__imageAnimation {
+  opacity: 1;
+  transform: translateY(0px);
 }
 </style>

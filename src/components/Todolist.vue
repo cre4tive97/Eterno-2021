@@ -29,12 +29,14 @@
     <p class="todolist__emptyAlert" v-show="todolistEmptyCheck">
       할 일 목록이 비어 있습니다. + 아이콘을 눌러 추가해보세요!
     </p>
-    <button @click="createTodolistState = true" class="todolist__create">
-      <i class="fas fa-plus-circle"></i>
-    </button>
-    <button class="todolist__delete" @click="deleteTodolistState = true">
-      <i class="far fa-trash-alt"></i>
-    </button>
+    <div class="todolist__btnGroup">
+      <button @click="createTodolistState = true" class="todolist__create">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <button class="todolist__delete" @click="deleteTodolistState = true">
+        <i class="far fa-trash-alt"></i>
+      </button>
+    </div>
     <form class="todolist__create__form" v-show="createTodolistState == true">
       <span class="todolist__create__header">새로운 할 일</span>
       <input
@@ -61,7 +63,7 @@
       </div>
       <div class="todolist__create__btnGroup">
         <button class="todolist__create__submit" @click="createTodolistSubmit">
-          Submit
+          등록
         </button>
         <button
           class="todolist__create__cancel"
@@ -70,7 +72,7 @@
             createTodolistState = false;
           "
         >
-          Cancel
+          닫기
         </button>
       </div>
     </form>
@@ -224,9 +226,14 @@ li {
   display: flex;
   margin-bottom: 1rem;
 }
-.todolist__create {
-  position: fixed;
+.todolist__btnGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
   bottom: 20%;
+  position: fixed;
+}
+.todolist__create {
   font-size: 1.5rem;
   background: transparent;
   border-style: none;
@@ -235,9 +242,6 @@ li {
   transition: color 0.3s;
 }
 .todolist__delete {
-  position: fixed;
-  bottom: 20%;
-  right: 20%;
   margin-right: 1rem;
   font-size: 1.5rem;
   background: transparent;
@@ -360,5 +364,18 @@ li {
 .todolist__emptyAlert {
   position: absolute;
   margin-left: 1.5rem;
+}
+.todolist__delete:focus,
+.todolist__create:focus {
+  outline: none;
+}
+@media screen and (max-width: 1024px) {
+  .todolist__btnGroup {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    bottom: 20%;
+    position: fixed;
+  }
 }
 </style>

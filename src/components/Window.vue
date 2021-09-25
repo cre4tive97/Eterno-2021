@@ -91,4 +91,15 @@ export default {
 .btn-green {
   background: #28c640;
 }
+@media screen and (max-width: 1024px) {
+  .window-box {
+    max-width: 1000px;
+    width: 80%;
+    height: 65vh;
+    background: #262c32;
+    border-radius: 12px;
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.6);
+    overflow: auto;
+  }
+}
 </style>
