@@ -15,6 +15,14 @@
       :i="i"
       v-for="(a, i) in instagramData"
       :key="i"
+      @like="
+        instagramData[i].likes++;
+        instagramData[i].liked = true;
+      "
+      @dislike="
+        instagramData[i].likes--;
+        instagramData[i].liked = false;
+      "
     />
   </div>
 </template>
@@ -32,7 +40,7 @@ export default {
           postImage: "https://placeimg.com/640/480/arch",
           likes: 11,
           date: "October 20",
-          liked: false,
+          liked: true,
           content: "내일도 가고싶어😍",
         },
         {

@@ -15,8 +15,16 @@
         :style="{ backgroundImage: `url(${instagramData[i].postImage})` }"
       ></div>
       <div class="instagram__content__post__btnGroup">
-        <i v-show="instagramData[i].liked == false" class="far fa-heart"></i>
-        <i v-show="instagramData[i].liked == true" class="fas fa-heart"></i>
+        <i
+          v-show="instagramData[i].liked == false"
+          class="far fa-heart"
+          @click="clickLike"
+        ></i>
+        <i
+          v-show="instagramData[i].liked == true"
+          class="fas fa-heart"
+          @click="clickDislike"
+        ></i>
         <i class="far fa-comment-dots"></i>
       </div>
       <div class="instagram__content__post__like">
@@ -40,6 +48,18 @@ export default {
   props: {
     instagramData: Array,
     i: Number,
+  },
+  methods: {
+    clickLike() {
+      if (this.instagramData[this.i].liked === false) {
+        this.$emit("like");
+      }
+    },
+    clickDislike() {
+      if (this.instagramData[this.i].liked === true) {
+        this.$emit("dislike");
+      }
+    },
   },
 };
 </script>
