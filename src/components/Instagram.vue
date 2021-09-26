@@ -65,6 +65,7 @@ export default {
 <style>
 .instagram {
   width: 100%;
+  margin-top: 10px;
 }
 .instagram__header {
   position: sticky;

@@ -1,10 +1,7 @@
 <template>
   <div class="window">
     <div class="window-box">
-      <div
-        class="window__header"
-        :class="{ window__header__background: windowHeaderState }"
-      >
+      <div class="window__header">
         <div class="window__btn-group">
           <button class="btn btn-red" @click="$emit('closeWindow')"></button>
           <button class="btn btn-yellow"></button>
@@ -33,9 +30,7 @@ import Instagram from "./Instagram.vue";
 export default {
   name: "Window",
   data() {
-    return {
-      windowHeaderState: false,
-    };
+    return {};
   },
   props: {
     i: Number,
@@ -53,6 +48,12 @@ export default {
     if (this.i === 7) {
       this.windowHeaderState = true;
     }
+  },
+  methods: {
+    headerScrollHandler() {
+      let scroll = document.documentElement.scrollTop;
+      console.log(scroll);
+    },
   },
 };
 </script>
@@ -81,7 +82,7 @@ export default {
   height: 2.5rem;
   background: transparent;
   position: sticky;
-  top: 0px;
+  top: 0;
 }
 .window__btn-group {
   margin-left: 10px;
@@ -108,9 +109,7 @@ export default {
 .btn-green {
   background: #28c640;
 }
-.window__header__background {
-  background: rgba(0, 0, 0, 0.5);
-}
+
 @media screen and (max-width: 1024px) {
   .window-box {
     max-width: 1000px;

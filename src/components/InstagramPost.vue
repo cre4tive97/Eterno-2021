@@ -19,6 +19,9 @@
         <i v-show="instagramData[i].liked == true" class="fas fa-heart"></i>
         <i class="far fa-comment-dots"></i>
       </div>
+      <div class="instagram__content__post__like">
+        좋아요 {{ instagramData[i].likes }}개
+      </div>
       <div class="instagram__content__post__text">
         <div class="instagram__content__post__username">
           {{ instagramData[i].name }}
@@ -69,15 +72,21 @@ export default {
 .instagram__content__post__btnGroup {
   margin: 0 1.5rem;
   font-size: 1.25rem;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .instagram__content__post__btnGroup i {
   margin-right: 1rem;
+}
+.instagram__content__post__like {
+  margin: 0 1.5rem;
 }
 .instagram__content__post__text {
   margin: 0 1.5rem;
   display: flex;
   align-items: center;
   font-size: 1rem;
+}
+.instagram__content__post__username {
+  margin-right: 0.5rem;
 }
 </style>
