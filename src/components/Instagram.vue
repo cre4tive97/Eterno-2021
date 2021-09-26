@@ -10,6 +10,7 @@
         </ul>
       </nav>
     </header>
+    <div class="instagram__content"></div>
   </div>
 </template>
 
