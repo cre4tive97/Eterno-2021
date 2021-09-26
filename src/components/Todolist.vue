@@ -26,9 +26,9 @@
         >
       </li>
     </div>
-    <p class="todolist__emptyAlert" v-show="todolistEmptyCheck">
+    <span class="todolist__emptyAlert" v-show="todolistEmptyCheck">
       할 일 목록이 비어 있습니다. + 아이콘을 눌러 추가해보세요!
-    </p>
+    </span>
     <div class="todolist__btnGroup">
       <button @click="createTodolistState = true" class="todolist__create">
         <i class="fas fa-plus-circle"></i>
@@ -45,6 +45,12 @@
         placeholder="ex) Go to gym"
         @input="getCreateTodolistInputValue"
       />
+      <div
+        class="todolist__create__inputAlert"
+        v-show="createTodolistInputEmptyCheck"
+      >
+        <p>할 일을 입력해주세요.</p>
+      </div>
       <div>
         <label
           class="todolist__create__color__label"
@@ -114,6 +120,7 @@ export default {
       createTodolistInputValue: "",
       createTodolistColorValue: "#FFFFFF",
       todolistEmptyCheck: true,
+      createTodolistInputEmptyCheck: false,
     };
   },
   methods: {
@@ -137,15 +144,23 @@ export default {
       let date = new Date();
       let newTodolist = {
         title: this.createTodolistInputValue,
-        date: `${date.getMonth()}/${date.getDate()}`,
+        date: `${date.getMonth() + 1}월${date.getDate()}일`,
         checked: false,
         color: this.createTodolistColorValue,
       };
-      this.savedTodolist.push(newTodolist);
-      this.createTodolistState = false;
-      e.target.parentNode.parentNode.childNodes[1].value = "";
-      localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
-      this.todolistEmptyCheck = false;
+      if (this.createTodolistInputValue !== "") {
+        this.savedTodolist.push(newTodolist);
+        this.createTodolistState = false;
+        e.target.parentNode.parentNode.childNodes[1].value = "";
+        localStorage.setItem("todolist", JSON.stringify(this.savedTodolist));
+        this.todolistEmptyCheck = false;
+        this.createTodolistInputValue = "";
+      } else {
+        this.createTodolistInputEmptyCheck = true;
+        setTimeout(() => {
+          this.createTodolistInputEmptyCheck = false;
+        }, 2000);
+      }
     },
     deleteTodolistAll(e) {
       e.preventDefault();
@@ -244,6 +259,15 @@ li {
   color: rgba(255, 255, 255, 0.5);
   transition: color 0.3s;
 }
+.todolist__create__inputAlert {
+  background: black;
+  padding: 2px 4px;
+  position: absolute;
+  bottom: 85px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+}
+
 .todolist__delete {
   margin-right: 1rem;
   font-size: 1.5rem;
@@ -259,7 +283,7 @@ li {
 }
 .todolist__create__form {
   width: 30%;
-  height: 160px;
+  height: 180px;
   box-sizing: border-box;
   padding: 1rem 1.5rem;
   border-radius: 0.8rem;
@@ -280,7 +304,7 @@ li {
   background: transparent;
   border-style: none;
   color: white;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .todolist__create__input:focus {
@@ -381,7 +405,7 @@ li {
   }
   .todolist__create__form {
     width: 30%;
-    height: 160px;
+    height: 180px;
     box-sizing: border-box;
     padding: 1rem 1.5rem;
     border-radius: 0.8rem;
