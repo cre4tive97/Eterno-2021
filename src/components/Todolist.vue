@@ -152,18 +152,21 @@ export default {
       this.savedTodolist = [];
       localStorage.removeItem("todolist");
       this.todolistEmptyCheck = true;
+      this.deleteTodolistState = false;
     },
     deleteTodolistSelected(e) {
       e.preventDefault();
-      let selected = this.savedTodolist.filter(
+      let unselected = this.savedTodolist.filter(
         (a, i) => this.savedTodolist[i].checked == false
       );
-      this.savedTodolist = [...selected];
+      this.savedTodolist = [...unselected];
       localStorage.removeItem("todolist");
-      localStorage.setItem("todolist", JSON.stringify(selected));
-      if (selected.length == 0) {
+      localStorage.setItem("todolist", JSON.stringify(unselected));
+      this.deleteTodolistState = false;
+      if (unselected.length == 0) {
         localStorage.removeItem("todolist");
         this.todolistEmptyCheck = true;
+        this.deleteTodolistState = false;
       }
     },
   },

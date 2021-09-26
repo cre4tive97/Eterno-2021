@@ -10,7 +10,19 @@
         </ul>
       </nav>
     </header>
-    <div class="instagram__content"></div>
+    <div class="instagram__content">
+      <div class="instagram__content__profile">
+        <div class="instagram__content__profile__image"></div>
+        <div class="instagram__content__profile__username"></div>
+      </div>
+      <div class="instagram__content__post">
+        <div class="instagram__content__post__image"></div>
+        <div class="instagram__content__post__text">
+          <div class="instagram__content__post__username"></div>
+          <div class="instagram__content__post__content"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,7 +31,7 @@ export default {
   name: "Instagram",
   data() {
     return {
-      user: [],
+      instagramData: [],
     };
   },
 };
