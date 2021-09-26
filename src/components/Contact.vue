@@ -47,7 +47,7 @@ a {
   color: white;
 }
 .contact {
-  margin-top: 80px;
+  margin-top: 30px;
   width: 100%;
   display: flex;
   flex-direction: column;

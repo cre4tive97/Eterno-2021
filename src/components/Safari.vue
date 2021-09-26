@@ -61,7 +61,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 140px;
+  margin-top: 90px;
 }
 .google__img {
   margin-bottom: 30px;

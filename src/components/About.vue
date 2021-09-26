@@ -53,7 +53,7 @@ p {
   margin: 0;
 }
 .about {
-  margin-top: 50px;
+  margin-top: 1rem;
   color: white;
   width: 100%;
 }

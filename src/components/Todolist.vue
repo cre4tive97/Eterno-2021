@@ -184,7 +184,7 @@ li {
   list-style: none;
 }
 .todolist {
-  margin-top: 3rem;
+  margin-top: 1rem;
   color: white;
   box-sizing: border-box;
   width: 100%;

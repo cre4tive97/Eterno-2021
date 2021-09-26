@@ -64,7 +64,6 @@ export default {
 
 <style>
 .instagram {
-  margin-top: 50px;
   width: 100%;
 }
 .instagram__header {

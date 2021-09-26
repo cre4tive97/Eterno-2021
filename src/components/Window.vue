@@ -1,8 +1,11 @@
 <template>
   <div class="window">
     <div class="window-box">
-      <div class="window-header">
-        <div class="window-btn-group">
+      <div
+        class="window__header"
+        :class="{ window__header__background: windowHeaderState }"
+      >
+        <div class="window__btn-group">
           <button class="btn btn-red" @click="$emit('closeWindow')"></button>
           <button class="btn btn-yellow"></button>
           <button class="btn btn-green"></button>
@@ -30,7 +33,9 @@ import Instagram from "./Instagram.vue";
 export default {
   name: "Window",
   data() {
-    return {};
+    return {
+      windowHeaderState: false,
+    };
   },
   props: {
     i: Number,
@@ -43,6 +48,11 @@ export default {
     Todolist,
     Contact,
     Instagram,
+  },
+  mounted() {
+    if (this.i === 7) {
+      this.windowHeaderState = true;
+    }
   },
 };
 </script>
@@ -66,13 +76,14 @@ export default {
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.6);
   overflow: auto;
 }
-.window-header {
+.window__header {
   width: 100%;
   height: 2.5rem;
   background: transparent;
-  position: fixed;
+  position: sticky;
+  top: 0px;
 }
-.window-btn-group {
+.window__btn-group {
   margin-left: 10px;
 }
 .btn {
@@ -96,6 +107,9 @@ export default {
 }
 .btn-green {
   background: #28c640;
+}
+.window__header__background {
+  background: rgba(0, 0, 0, 0.5);
 }
 @media screen and (max-width: 1024px) {
   .window-box {

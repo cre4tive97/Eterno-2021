@@ -62,7 +62,6 @@ export default {
 <style>
 .terminal {
   font-family: "SFMonoRegular";
-  margin-top: 3rem;
 }
 .terminal__content {
   padding: 0px 14px;

@@ -23,7 +23,9 @@
         <div class="instagram__content__post__username">
           {{ instagramData[i].name }}
         </div>
-        <div class="instagram__content__post__content"></div>
+        <div class="instagram__content__post__content">
+          <p>{{ instagramData[i].content }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -67,11 +69,15 @@ export default {
 .instagram__content__post__btnGroup {
   margin: 0 1.5rem;
   font-size: 1.25rem;
+  margin-bottom: 8px;
 }
 .instagram__content__post__btnGroup i {
   margin-right: 1rem;
 }
 .instagram__content__post__text {
   margin: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
 }
 </style>
