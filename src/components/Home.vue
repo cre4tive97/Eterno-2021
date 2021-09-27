@@ -20,6 +20,12 @@
       </div>
     </div>
   </div>
+  <footer class="footer-bar">
+    <div class="footer__btn"></div>
+    <div class="footer__currentTime">
+      <p>{{ currentTime }}</p>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -50,6 +56,7 @@ export default {
         { id: 6, name: "Terminal", image: require("../images/terminal.png") },
         { id: 7, name: "Instagram", image: require("../images/instagram.png") },
       ],
+      currentTime: "",
     };
   },
   methods: {},
@@ -59,8 +66,12 @@ export default {
     }, 0);
     if (localStorage.getItem("check") == null) {
       localStorage.setItem("check", 1);
-      // v-if="localStorageCheck == null" Introduce에 넣기
     }
+    let date = new Date();
+    this.currentTime = `${date.getHours()}:${date.getMinutes()}`;
+    setInterval(() => {
+      this.currentTime = `${date.getHours()}:${date.getMinutes()}`;
+    }, 5000);
   },
 };
 </script>
@@ -130,5 +141,44 @@ export default {
 }
 .homeFadeIn {
   opacity: 1;
+}
+.footer-bar {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer__btn {
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  margin-left: 1.5rem;
+  transition: all 0.3s;
+}
+.footer__btn:hover {
+  transform: scale(110%);
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.footer__currentTime {
+  width: 70px;
+  height: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  margin-right: 1.5rem;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  color: white;
+}
+.footer__currentTime p {
+  position: relative;
+  bottom: 2px;
 }
 </style>
