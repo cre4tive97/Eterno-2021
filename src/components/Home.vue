@@ -62,10 +62,38 @@ export default {
   methods: {
     getCurrentTime() {
       let date = new Date();
-      this.currentTimeData = `${date.getHours()}:${date.getMinutes()}`;
+      function hour() {
+        if (date.getHours() < 10) {
+          return `0${date.getHours()}`;
+        } else {
+          return `${date.getHours()}`;
+        }
+      }
+      function minute() {
+        if (date.getMinutes() < 10) {
+          return `0${date.getMinutes()}`;
+        } else {
+          return `${date.getMinutes()}`;
+        }
+      }
+      this.currentTimeData = `${hour()}:${minute()}`;
       setInterval(() => {
         let date = new Date();
-        this.currentTimeData = `${date.getHours()}:${date.getMinutes()}`;
+        function hour() {
+          if (date.getHours() < 10) {
+            return `0${date.getHours()}`;
+          } else {
+            return `${date.getHours()}`;
+          }
+        }
+        function minute() {
+          if (date.getMinutes() < 10) {
+            return `0${date.getMinutes()}`;
+          } else {
+            return `${date.getMinutes()}`;
+          }
+        }
+        this.currentTimeData = `${hour()}:${minute()}`;
       }, 5000);
     },
   },
