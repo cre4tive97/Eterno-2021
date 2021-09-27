@@ -20,8 +20,11 @@
       </div>
     </div>
   </div>
+  <transition name="sidebarAnimation">
+    <Sidebar :apps="apps" :i="i" v-show="sidebarState" />
+  </transition>
   <footer class="footer-bar">
-    <div class="footer__btn"></div>
+    <div class="footer__btn" @click="clickfooterBtn"></div>
     <div class="footer__currentTime">
       <p>{{ currentTimeData }}</p>
     </div>
@@ -32,12 +35,14 @@
 import background from "../images/background.jpg";
 import Introduce from "./Introduce.vue";
 import Window from "./Window.vue";
+import Sidebar from "./Sidebar.vue";
 
 export default {
   name: "Home",
   components: {
     Introduce,
     Window,
+    Sidebar,
   },
   data() {
     return {
@@ -57,6 +62,7 @@ export default {
         { id: 7, name: "Instagram", image: require("../images/instagram.png") },
       ],
       currentTimeData: "",
+      sidebarState: false,
     };
   },
   methods: {
@@ -76,6 +82,7 @@ export default {
           return `${date.getMinutes()}`;
         }
       }
+      // 너무 비효율적이라 개선 필요한 부분
       this.currentTimeData = `${hour()}:${minute()}`;
       setInterval(() => {
         let date = new Date();
@@ -95,6 +102,13 @@ export default {
         }
         this.currentTimeData = `${hour()}:${minute()}`;
       }, 5000);
+    },
+    clickfooterBtn() {
+      if (this.sidebarState == false) {
+        this.sidebarState = true;
+      } else {
+        this.sidebarState = false;
+      }
     },
   },
   mounted() {
@@ -185,6 +199,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  backdrop-filter: blur(16px);
 }
 .footer__btn {
   width: 30px;
@@ -214,5 +229,21 @@ export default {
 .footer__currentTime p {
   position: relative;
   bottom: 2px;
+}
+.sidebarAnimation-enter-from {
+  opacity: 0;
+  transform: translateX(-200px);
+}
+.sidebarAnimation-enter-active,
+.sidebarAnimation-leave-active {
+  transition: all 0.5s;
+}
+.sidebarAnimation-enter-to {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.sidebarAnimation-leave-to {
+  opacity: 0;
+  transform: translateX(-200px);
 }
 </style>
