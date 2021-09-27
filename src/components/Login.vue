@@ -9,7 +9,7 @@
       :class="{ loginFadeOut: loginState, loginFadeIn: loginFadeIn }"
     >
       <div class="intro-login__imgbox">
-        <img src="profile.jpg" alt="profile" />
+        <img src="profile.png" alt="profile" />
       </div>
       <h1 class="intro-login__username">Harry Borrison</h1>
       <button @click="login" class="intro-login__button">
@@ -59,6 +59,7 @@ export default {
 }
 .intro-login__imgbox img {
   border-radius: 50%;
+  background: white;
   width: 200px;
 }
 .intro-login__username {

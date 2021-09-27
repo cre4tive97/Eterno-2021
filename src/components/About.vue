@@ -3,7 +3,7 @@
     <div class="about__content">
       <div class="about__profile">
         <div class="about__profile__image">
-          <img src="profile.jpg" alt="profile" />
+          <img src="profile.png" alt="profile" />
         </div>
         <p class="about__profile__name">Jaemun Choi | cre4tive97</p>
         <p class="about__profile__motto">Be a programmer, not a coder.</p>
@@ -76,9 +76,10 @@ p {
 .about__profile__image img {
   width: 100%;
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   margin-bottom: 1rem;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .about__profile__name {
