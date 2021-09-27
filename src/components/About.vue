@@ -34,8 +34,8 @@ export default {
   data() {
     return {
       skillsetData: [
-        { name: "HTML5", color: "#FF5F57" },
-        { name: "CSS3", color: "#264BDD" },
+        { name: "HTML", color: "#FF5F57" },
+        { name: "CSS", color: "#264BDD" },
         { name: "JavaScript", color: "#F1DE50" },
         { name: "Vue.js", color: "#65B485" },
         { name: "Node.js", color: "#92C84A" },

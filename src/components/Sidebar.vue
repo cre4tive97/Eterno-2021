@@ -35,8 +35,8 @@
       <div class="sidebar__recommend__text">
         <p>새로운 할 일 등록은 어때요?</p>
       </div>
-      <div class="sidebar__recommend__app">
-        <img :src="apps[5].image" alt="" />
+      <div class="sidebar__recommend__app" @click="$emit('openWindow')">
+        <img :src="apps[5].image" />
         <span>{{ apps[5].name }}</span>
       </div>
     </div>
@@ -47,7 +47,14 @@
 export default {
   name: "Sidebar",
   data() {
-    return {};
+    return {
+      greetingData: [
+        "Good Morning",
+        "Good Afternoon",
+        "Good Evening",
+        "Good Night",
+      ],
+    };
   },
   props: {
     apps: Array,
@@ -115,6 +122,9 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 40%;
+}
+.sidebar__recommend__app:hover {
+  cursor: pointer;
 }
 .sidebar__recommend__app img {
   width: 50px;

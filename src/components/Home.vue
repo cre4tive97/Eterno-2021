@@ -21,7 +21,15 @@
     </div>
   </div>
   <transition name="sidebarAnimation">
-    <Sidebar :apps="apps" :i="i" v-show="sidebarState" />
+    <Sidebar
+      :apps="apps"
+      :i="i"
+      v-show="sidebarState"
+      @openWindow="
+        windowState = 5;
+        sidebarState = false;
+      "
+    />
   </transition>
   <footer class="footer-bar">
     <div class="footer__btn" @click="clickfooterBtn"></div>
@@ -199,6 +207,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 5;
   backdrop-filter: blur(16px);
 }
 .footer__btn {
