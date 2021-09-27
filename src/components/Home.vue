@@ -23,7 +23,7 @@
   <footer class="footer-bar">
     <div class="footer__btn"></div>
     <div class="footer__currentTime">
-      <p>{{ currentTime }}</p>
+      <p>{{ currentTimeData }}</p>
     </div>
   </footer>
 </template>
@@ -56,22 +56,28 @@ export default {
         { id: 6, name: "Terminal", image: require("../images/terminal.png") },
         { id: 7, name: "Instagram", image: require("../images/instagram.png") },
       ],
-      currentTime: "",
+      currentTimeData: "",
     };
   },
-  methods: {},
+  methods: {
+    getCurrentTime() {
+      let date = new Date();
+      this.currentTimeData = `${date.getHours()}:${date.getMinutes()}`;
+      setInterval(() => {
+        let date = new Date();
+        this.currentTimeData = `${date.getHours()}:${date.getMinutes()}`;
+      }, 5000);
+    },
+  },
   mounted() {
     setTimeout(() => {
       this.homeFadeIn = true;
     }, 0);
+
     if (localStorage.getItem("check") == null) {
       localStorage.setItem("check", 1);
     }
-    let date = new Date();
-    this.currentTime = `${date.getHours()}:${date.getMinutes()}`;
-    setInterval(() => {
-      this.currentTime = `${date.getHours()}:${date.getMinutes()}`;
-    }, 5000);
+    this.getCurrentTime();
   },
 };
 </script>
