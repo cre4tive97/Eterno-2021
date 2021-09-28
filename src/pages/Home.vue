@@ -41,9 +41,9 @@
 
 <script>
 import background from "../images/background.jpg";
-import Introduce from "./Introduce.vue";
-import Window from "./Window.vue";
-import Sidebar from "./Sidebar.vue";
+import Introduce from "../components/Introduce.vue";
+import Window from "../components/Window.vue";
+import Sidebar from "../components/Sidebar.vue";
 
 export default {
   name: "Home",
