@@ -1,6 +1,6 @@
 ## 🧷 Features
 
-- [x] consist of Vue3, Vuex@next, vue-router
+- [x] Consist of Vue3, Vuex@next, vue-router
 - [x] MacOS BigSur Style UI
 - [x] Variable apps
 - [ ] Responsive design

@@ -119,6 +119,7 @@ export default {
       }
     },
   },
+
   mounted() {
     setTimeout(() => {
       this.homeFadeIn = true;
@@ -128,6 +129,10 @@ export default {
       localStorage.setItem("check", 1);
     }
     this.getCurrentTime();
+    this.$store.commit("setRandomIndex");
+    setTimeout(() => {
+      this.$store.dispatch("getCurrentWeather");
+    }, 1000);
   },
 };
 </script>

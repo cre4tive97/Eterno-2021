@@ -59,6 +59,9 @@ export default {
       }
     }, 4000);
     this.defaultTextCount = 1;
+    if (localStorage.getItem("CurrentPosition") == null) {
+      this.$store.commit("setCurrentPosition");
+    }
   },
   watch: {
     $route(to) {
