@@ -1,14 +1,10 @@
-<<<<<<< HEAD
+## 🧷Features
 
-# portfolio
+- [x] MacOS BigSur Style UI
+- [x] Variable apps
+- [ ] Responsive design
 
-=======
-
-# portfolio-2021
-
-> > > > > > > 67189950bd8e42397f85cc0e8681ca44eb2f8114
-
-## Project setup
+## ⛏ Project setup
 
 ```
 yarn install
