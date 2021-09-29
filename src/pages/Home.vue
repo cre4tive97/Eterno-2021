@@ -130,9 +130,7 @@ export default {
     }
     this.getCurrentTime();
     this.$store.commit("setRandomIndex");
-    setTimeout(() => {
-      this.$store.dispatch("getCurrentWeather");
-    }, 1000);
+    this.$store.dispatch("getCurrentWeather");
   },
 };
 </script>

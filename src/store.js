@@ -7,7 +7,7 @@ const store = createStore({
       weatherData: [],
       randomIndex: 0,
       recommendApp: [],
-      currentHour: 0,
+      weatherHours: [0, 5, 10, 15, 20],
       currentPosition: [],
     };
   },
@@ -16,11 +16,11 @@ const store = createStore({
       const randomNum = Math.floor(Math.random() * 8);
       state.randomIndex = randomNum;
     },
-    setCurrentWeather(state, data) {
-      if (state.currentHour >= 0 && state.currentHour <= 3) {
-        state.weatherData = data;
-      }
+    setWeatherData(state, data) {
+      state.weatherData = data;
+      console.log(state.weatherData);
     },
+
     setCurrentPosition(state) {
       navigator.geolocation.getCurrentPosition((position) => {
         state.currentPosition = [
@@ -47,7 +47,7 @@ const store = createStore({
         )
         .then((a) => {
           console.log(a.data);
-          context.commit("setCurrentWeather", a.data.list);
+          context.commit("setCurrentWeather", a.data);
         })
         .catch(() => {
           console.log(context.state.currentPosition[0]);
