@@ -23,7 +23,6 @@
   <transition name="sidebarAnimation">
     <Sidebar
       :apps="apps"
-      :i="i"
       v-show="sidebarState"
       @openWindow="
         windowState = 5;
@@ -129,8 +128,6 @@ export default {
       localStorage.setItem("check", 1);
     }
     this.getCurrentTime();
-    this.$store.commit("setRandomIndex");
-    this.$store.dispatch("getCurrentWeather");
   },
 };
 </script>

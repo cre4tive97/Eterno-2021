@@ -5,29 +5,26 @@
     </div>
     <div class="sidebar__weather">
       <div class="sidebar__weather__group">
-        <p class="sidebar__weather__city">Seoul</p>
-        <h2 class="sidebar__weather__currentTemperature">26.5℃</h2>
+        <p class="sidebar__weather__city">
+          {{ $store.state.weatherData[0].timezone }}
+        </p>
+        <h2 class="sidebar__weather__currentTemperature">
+          {{ Math.floor(weatherData[1][0].temp) }}℃
+        </h2>
       </div>
       <div class="sidebar__weather__week">
-        <div class="sidebar__weather__days">
+        <div
+          class="sidebar__weather__days"
+          v-for="(a, i) in weatherData[1].length"
+          :key="i"
+        >
           <i style="color:#F8B914" class="fas fa-sun"></i>
-          <span class="slidebar__weather__days__currentTemperature">26.5℃</span>
-        </div>
-        <div class="sidebar__weather__days">
-          <i style="color:#F8B914" class="fas fa-sun"></i>
-          <span class="slidebar__weather__days__currentTemperature">26.5℃</span>
-        </div>
-        <div class="sidebar__weather__days">
-          <i style="color:#F8B914" class="fas fa-sun"></i>
-          <span class="slidebar__weather__days__currentTemperature">26.5℃</span>
-        </div>
-        <div class="sidebar__weather__days">
-          <i style="color:#F8B914" class="fas fa-sun"></i>
-          <span class="slidebar__weather__days__currentTemperature">26.5℃</span>
-        </div>
-        <div class="sidebar__weather__days">
-          <i style="color:#F8B914" class="fas fa-sun"></i>
-          <span class="slidebar__weather__days__currentTemperature">26.5℃</span>
+          <span class="sidebar__weather__days__currentTemperature"
+            >{{ Math.floor(weatherData[1][i].temp) }}℃</span
+          >
+          <span class="sidebar__weather__days__currentHour"
+            >{{ unixTimeChanger(weatherData[1][i].dt) }}시</span
+          >
         </div>
       </div>
     </div>
@@ -44,6 +41,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   name: "Sidebar",
   data() {
@@ -58,7 +56,21 @@ export default {
   },
   props: {
     apps: Array,
-    i: Number,
+  },
+  computed: {
+    ...mapState(["weatherData"]),
+    ...mapActions(["getCurrentWeather"]),
+  },
+  methods: {
+    unixTimeChanger(time) {
+      let date = new Date(time * 1000);
+      let hour = "0" + date.getHours();
+      return hour.substr(-2);
+    },
+  },
+  mounted() {
+    this.$store.commit("setRandomIndex");
+    this.$store.dispatch("getCurrentWeather");
   },
 };
 </script>
@@ -107,7 +119,10 @@ export default {
   align-items: center;
   font-size: 1.5rem;
 }
-.slidebar__weather__days__currentTemperature {
+.sidebar__weather__days__currentTemperature {
+  font-size: 0.5rem;
+}
+.sidebar__weather__days__currentHour {
   font-size: 0.5rem;
 }
 .sidebar__recommend {

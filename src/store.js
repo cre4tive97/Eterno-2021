@@ -4,7 +4,10 @@ import axios from "axios";
 const store = createStore({
   state() {
     return {
-      weatherData: [],
+      weatherData: [
+        { timezone: "" },
+        [{ temp: 0 }, { temp: 0 }, { temp: 0 }, { temp: 0 }, { temp: 0 }],
+      ],
       randomIndex: 0,
       recommendApp: [],
       weatherHours: [0, 5, 10, 15, 20],
@@ -17,8 +20,16 @@ const store = createStore({
       state.randomIndex = randomNum;
     },
     setWeatherData(state, data) {
-      state.weatherData = data;
-      console.log(state.weatherData);
+      let timezone = { timezone: data.timezone };
+      state.weatherData.push(timezone);
+      let fiveHoursData = [
+        data.hourly[0],
+        data.hourly[1],
+        data.hourly[2],
+        data.hourly[3],
+        data.hourly[4],
+      ];
+      state.weatherData = [timezone, fiveHoursData];
     },
 
     setCurrentPosition(state) {
@@ -27,7 +38,6 @@ const store = createStore({
           position.coords.latitude,
           position.coords.longitude,
         ];
-        console.log(state.currentPosition);
         localStorage.setItem(
           "CurrentPosition",
           JSON.stringify(state.currentPosition)
@@ -46,11 +56,7 @@ const store = createStore({
           }&exclude=minutely,daily&units=metric&appid=a985ee3f6bd72d99e16a6e0a1c0363c0`
         )
         .then((a) => {
-          console.log(a.data);
-          context.commit("setCurrentWeather", a.data);
-        })
-        .catch(() => {
-          console.log(context.state.currentPosition[0]);
+          context.commit("setWeatherData", a.data);
         });
     },
   },
