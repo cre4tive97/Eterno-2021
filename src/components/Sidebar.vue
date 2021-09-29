@@ -30,11 +30,11 @@
     </div>
     <div class="sidebar__recommend">
       <div class="sidebar__recommend__text">
-        <p>새로운 할 일 등록은 어때요?</p>
+        <p>{{ recommendApps[randomIndex].text }}</p>
       </div>
       <div class="sidebar__recommend__app" @click="$emit('openWindow')">
-        <img :src="apps[5].image" />
-        <span>{{ apps[5].name }}</span>
+        <img :src="recommendApps[randomIndex].image" />
+        <span>{{ recommendApps[randomIndex].name }}</span>
       </div>
     </div>
   </div>
@@ -52,13 +52,48 @@ export default {
         "Good Evening",
         "Good Night",
       ],
+      recommendApps: [
+        {
+          name: "Safari",
+          image: require("../images/safari.png"),
+          text: "구글 웹 서핑은 어때요?",
+        },
+        {
+          name: "Contact",
+          image: require("../images/message.png"),
+          text: "저의 연락처를 알고 싶다면?",
+        },
+        {
+          name: "Information",
+          image: require("../images/setting.png"),
+          text: "웹사이트의 정보를 알고 싶나요?",
+        },
+        {
+          name: "About me",
+          image: require("../images/about.png"),
+          text: "제작자에 대해서 알고 싶다면?",
+        },
+        {
+          name: "Todo list",
+          image: require("../images/todolist.png"),
+          text: "새로운 할 일 등록은 어때요?",
+        },
+        {
+          name: "Terminal",
+          image: require("../images/terminal.png"),
+          text: "터미널에서 간단한 작업을 해보세요.",
+        },
+        {
+          name: "Instagram",
+          image: require("../images/instagram.png"),
+          text: "Instagram에서 새로운 피드를 남겨보세요.",
+        },
+      ],
     };
   },
-  props: {
-    apps: Array,
-  },
+
   computed: {
-    ...mapState(["weatherData"]),
+    ...mapState(["weatherData", "randomIndex"]),
     ...mapActions(["getCurrentWeather"]),
   },
   methods: {
@@ -69,7 +104,6 @@ export default {
     },
   },
   mounted() {
-    this.$store.commit("setRandomIndex");
     this.$store.dispatch("getCurrentWeather");
   },
 };

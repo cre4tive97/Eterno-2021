@@ -16,7 +16,7 @@ const store = createStore({
   },
   mutations: {
     setRandomIndex(state) {
-      const randomNum = Math.floor(Math.random() * 8);
+      const randomNum = Math.floor(Math.random() * 7);
       state.randomIndex = randomNum;
     },
     setWeatherData(state, data) {

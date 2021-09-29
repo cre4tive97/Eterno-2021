@@ -22,7 +22,6 @@
   </div>
   <transition name="sidebarAnimation">
     <Sidebar
-      :apps="apps"
       v-show="sidebarState"
       @openWindow="
         windowState = 5;
@@ -62,7 +61,11 @@ export default {
         { id: 0, name: "Project", image: require("../images/project.png") },
         { id: 1, name: "Safari", image: require("../images/safari.png") },
         { id: 2, name: "Contact", image: require("../images/message.png") },
-        { id: 3, name: "Setting", image: require("../images/setting.png") },
+        {
+          id: 3,
+          name: "Information",
+          image: require("../images/setting.png"),
+        },
         { id: 4, name: "About me", image: require("../images/about.png") },
         { id: 5, name: "Todo list", image: require("../images/todolist.png") },
         { id: 6, name: "Terminal", image: require("../images/terminal.png") },
@@ -113,6 +116,7 @@ export default {
     clickfooterBtn() {
       if (this.sidebarState == false) {
         this.sidebarState = true;
+        this.$store.commit("setRandomIndex");
       } else {
         this.sidebarState = false;
       }
