@@ -1,12 +1,12 @@
 <template>
   <div class="sidebar">
     <div class="sidebar__greeting">
-      <h2>Good morning</h2>
+      <h2>{{ greetingData[greetingStatus] }}</h2>
     </div>
     <div class="sidebar__weather">
       <div class="sidebar__weather__group">
         <p class="sidebar__weather__city">
-          {{ $store.state.weatherData[0].timezone }}
+          {{ $store.state.weatherData[0] }}
         </p>
         <h2 class="sidebar__weather__currentTemperature">
           {{ Math.floor(weatherData[1][0].temp) }}℃
@@ -32,7 +32,10 @@
       <div class="sidebar__recommend__text">
         <p>{{ recommendApps[randomIndex].text }}</p>
       </div>
-      <div class="sidebar__recommend__app" @click="$emit('openWindow')">
+      <div
+        class="sidebar__recommend__app"
+        @click="$emit('openWindow', randomIndex)"
+      >
         <img :src="recommendApps[randomIndex].image" />
         <span>{{ recommendApps[randomIndex].name }}</span>
       </div>
@@ -47,43 +50,51 @@ export default {
   data() {
     return {
       greetingData: [
+        "Good Night",
         "Good Morning",
         "Good Afternoon",
         "Good Evening",
-        "Good Night",
       ],
+      greetingStatus: 0,
       recommendApps: [
         {
+          id: 0,
           name: "Safari",
           image: require("../images/safari.png"),
           text: "구글 웹 서핑은 어때요?",
         },
         {
+          id: 1,
           name: "Contact",
           image: require("../images/message.png"),
           text: "저의 연락처를 알고 싶다면?",
         },
         {
+          id: 2,
           name: "Information",
           image: require("../images/setting.png"),
           text: "웹사이트의 정보를 알고 싶나요?",
         },
         {
+          id: 3,
           name: "About me",
           image: require("../images/about.png"),
           text: "제작자에 대해서 알고 싶다면?",
         },
         {
+          id: 4,
           name: "Todo list",
           image: require("../images/todolist.png"),
           text: "새로운 할 일 등록은 어때요?",
         },
         {
+          id: 5,
           name: "Terminal",
           image: require("../images/terminal.png"),
           text: "터미널에서 간단한 작업을 해보세요.",
         },
         {
+          id: 6,
           name: "Instagram",
           image: require("../images/instagram.png"),
           text: "Instagram에서 새로운 피드를 남겨보세요.",
@@ -102,9 +113,26 @@ export default {
       let hour = "0" + date.getHours();
       return hour.substr(-2);
     },
+    greetingtime() {
+      let date = new Date();
+      let hour = date.getHours();
+      if (hour > 0 && hour <= 6) {
+        this.greetingStatus = 0;
+      } else if (hour > 6 && hour <= 12) {
+        this.greetingStatus = 1;
+      } else if (hour > 12 && hour <= 18) {
+        this.greetingStatus = 2;
+      } else {
+        this.greetingStatus = 3;
+      }
+    },
+    setCurrentIndex() {
+      this.currentIndex = this.$store.state.randomIndex;
+    },
   },
   mounted() {
     this.$store.dispatch("getCurrentWeather");
+    this.greetingtime();
   },
 };
 </script>

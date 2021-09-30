@@ -24,8 +24,8 @@
     <Sidebar
       v-show="sidebarState"
       @openWindow="
-        windowState = 5;
         sidebarState = false;
+        windowState = $event + 1;
       "
     />
   </transition>
@@ -76,6 +76,10 @@ export default {
     };
   },
   methods: {
+    createRandomIndex() {
+      this.randomIndex = Math.floor(Math.random() * 7);
+      console.log(this.randomIndex);
+    },
     getCurrentTime() {
       let date = new Date();
       function hour() {

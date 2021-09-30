@@ -5,7 +5,7 @@ const store = createStore({
   state() {
     return {
       weatherData: [
-        { timezone: "" },
+        "",
         [{ temp: 0 }, { temp: 0 }, { temp: 0 }, { temp: 0 }, { temp: 0 }],
       ],
       randomIndex: 0,
@@ -16,12 +16,9 @@ const store = createStore({
   },
   mutations: {
     setRandomIndex(state) {
-      const randomNum = Math.floor(Math.random() * 7);
-      state.randomIndex = randomNum;
+      state.randomIndex = Math.floor(Math.random() * 7);
     },
     setWeatherData(state, data) {
-      let timezone = { timezone: data.timezone };
-      state.weatherData.push(timezone);
       let fiveHoursData = [
         data.hourly[0],
         data.hourly[1],
@@ -29,7 +26,7 @@ const store = createStore({
         data.hourly[3],
         data.hourly[4],
       ];
-      state.weatherData = [timezone, fiveHoursData];
+      state.weatherData = [data.timezone, fiveHoursData];
     },
 
     setCurrentPosition(state) {
