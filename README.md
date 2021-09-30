@@ -1,3 +1,7 @@
+## 🛠 Tech stack
+
+![logo](./Eterno.png)
+
 ## 🧷 Features
 
 - [x] Consist of Vue3, Vuex@next, vue-router

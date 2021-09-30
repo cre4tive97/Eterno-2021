@@ -58,7 +58,7 @@ export default {
 .information__title {
   font-size: 1.75rem;
   font-weight: 100;
-  color: rgb(173, 173, 173);
+  color: white;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   margin-bottom: 1rem;
 }

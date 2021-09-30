@@ -30,10 +30,10 @@
       할 일 목록이 비어 있습니다. + 아이콘을 눌러 추가해보세요!
     </span>
     <div class="todolist__btnGroup">
-      <button @click="createTodolistState = true" class="todolist__create">
+      <button @click="setCreateTodolistState" class="todolist__create">
         <i class="fas fa-plus-circle"></i>
       </button>
-      <button class="todolist__delete" @click="deleteTodolistState = true">
+      <button class="todolist__delete" @click="setDeleteTodolistState">
         <i class="far fa-trash-alt"></i>
       </button>
     </div>
@@ -138,6 +138,20 @@ export default {
     },
     getCreateTodolistColorValue(e) {
       this.createTodolistColorValue = e.target.value;
+    },
+    setCreateTodolistState() {
+      if (this.createTodolistState == false) {
+        this.createTodolistState = true;
+      } else {
+        this.createTodolistState = false;
+      }
+    },
+    setDeleteTodolistState() {
+      if (this.deleteTodolistState == false) {
+        this.deleteTodolistState = true;
+      } else {
+        this.deleteTodolistState = false;
+      }
     },
     createTodolistSubmit(e) {
       e.preventDefault();
