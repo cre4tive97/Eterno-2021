@@ -10,7 +10,7 @@
       </div>
       <Safari v-if="i == 1" />
       <Contact v-if="i == 2" />
-      <Setting v-if="i == 3" />
+      <Information v-if="i == 3" />
       <About v-if="i == 4" />
       <Todolist v-if="i == 5" />
       <Terminal v-if="i == 6" />
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Setting from "./Setting.vue";
+import Information from "./Information.vue";
 import Safari from "./Safari.vue";
 import Terminal from "./Terminal.vue";
 import About from "./About.vue";
@@ -37,7 +37,7 @@ export default {
   },
   components: {
     Safari,
-    Setting,
+    Information,
     Terminal,
     About,
     Todolist,
