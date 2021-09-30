@@ -6,11 +6,15 @@ const store = createStore({
     return {
       weatherData: [
         "",
-        [{ temp: 0 }, { temp: 0 }, { temp: 0 }, { temp: 0 }, { temp: 0 }],
+        [
+          { temp: 0, weather: [{ icon: "" }] },
+          { temp: 0, weather: [{ icon: "" }] },
+          { temp: 0, weather: [{ icon: "" }] },
+          { temp: 0, weather: [{ icon: "" }] },
+          { temp: 0, weather: [{ icon: "" }] },
+        ],
       ],
       randomIndex: 0,
-      recommendApp: [],
-      weatherHours: [0, 5, 10, 15, 20],
       currentPosition: [],
     };
   },

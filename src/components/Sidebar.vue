@@ -18,7 +18,10 @@
           v-for="(a, i) in weatherData[1].length"
           :key="i"
         >
-          <i style="color:#F8B914" class="fas fa-sun"></i>
+          <i
+            :style="weatherColor[weatherData[1][i].weather[0].icon]"
+            :class="weatherIcon[weatherData[1][i].weather[0].icon]"
+          ></i>
           <span class="sidebar__weather__days__currentTemperature"
             >{{ Math.floor(weatherData[1][i].temp) }}℃</span
           >
@@ -100,6 +103,46 @@ export default {
           text: "Instagram에서 새로운 피드를 남겨보세요.",
         },
       ],
+      weatherIcon: {
+        "01d": "fas fa-sun",
+        "03d": "fas fa-cloud",
+        "02d": "fas fa-cloud-sun",
+        "04d": "fas fa-cloud-meatball",
+        "09d": "fas fa-cloud-showers-heavy",
+        "10d": "fas fa-cloud-sun-rain",
+        "11d": "fas fa-poo-storm",
+        "13d": "fas fa-snowflake",
+        "50d": "fas fa-water",
+        "01n": "fas fa-moon",
+        "02n": "fas fa-cloud-moon",
+        "03n": "fas fa-cloud",
+        "04n": "fas fa-cloud-meatball",
+        "09n": "fas fa-cloud-showers-heavy",
+        "10n": "fas fa-cloud-moon-rain",
+        "11n": "fas fa-poo-storm",
+        "13n": "fas fa-snowflake",
+        "50n": "fas fa-water",
+      },
+      weatherColor: {
+        "01d": "#fcba03",
+        "03d": "#adadad",
+        "02d": "#adadad",
+        "04d": "#828282",
+        "09d": "#828282",
+        "10d": "#adadad",
+        "11d": "#828282",
+        "13d": "#828282",
+        "50d": "#828282",
+        "01n": "#7a7991",
+        "02n": "#adadad",
+        "03n": "#adadad",
+        "04n": "#828282",
+        "09n": "#828282",
+        "10n": "#adadad",
+        "11n": "#828282",
+        "13n": "#828282",
+        "50n": "#828282",
+      },
     };
   },
 
