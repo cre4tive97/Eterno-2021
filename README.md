@@ -1,6 +1,6 @@
 ## 🛠 Tech stack
 
-![logo](./Eterno.png)
+![logo](./public/Eterno.png)
 
 ## 🧷 Features
 
