@@ -19,7 +19,7 @@
           :key="i"
         >
           <i
-            :style="weatherColor[weatherData[1][i].weather[0].icon]"
+            :style="{ color: weatherColor[weatherData[1][i].weather[0].icon] }"
             :class="weatherIcon[weatherData[1][i].weather[0].icon]"
           ></i>
           <span class="sidebar__weather__days__currentTemperature"
@@ -125,20 +125,20 @@ export default {
       },
       weatherColor: {
         "01d": "#fcba03",
-        "03d": "#adadad",
-        "02d": "#adadad",
+        "03d": "#c2c2c2",
+        "02d": "#c2c2c2",
         "04d": "#828282",
         "09d": "#828282",
-        "10d": "#adadad",
+        "10d": "#c2c2c2",
         "11d": "#828282",
         "13d": "#828282",
         "50d": "#828282",
         "01n": "#7a7991",
-        "02n": "#adadad",
-        "03n": "#adadad",
+        "02n": "#c2c2c2",
+        "03n": "#c2c2c2",
         "04n": "#828282",
         "09n": "#828282",
-        "10n": "#adadad",
+        "10n": "#c2c2c2",
         "11n": "#828282",
         "13n": "#828282",
         "50n": "#828282",
