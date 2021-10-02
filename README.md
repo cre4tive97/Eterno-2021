@@ -2,7 +2,7 @@
 
 ![vue](https://img.shields.io/badge/Vue.js-%5E3.0.0-green)
 ![vuex](https://img.shields.io/badge/Vuex-%5E4.0.2-brightgreen)
-![vue-router](https://img.shields.io/badge/Vue-router-4-blue)
+
 
 ## 🧷 Features
 
