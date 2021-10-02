@@ -17,8 +17,8 @@
 - [x] Contact
 - [x] Todolist using LocalStorage
 - [x] About me
-- [ ] System Information
-- [ ] Terminal (will be modified ASAP)
+- [x] System Information
+- [x] Terminal (will be modified ASAP)
 - [x] Sidebar weather with OpenWeather API
 - [ ] Instagram CRUD with node.js / Express
 
