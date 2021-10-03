@@ -24,15 +24,15 @@
 
 ## 🧾 Features/WIL Description
 
-#### Sidebar weather app
+#### Sidebar weather app 
 
 - Openweathermap API와 Vuex를 사용해서 구현했습니다.
 - 사실 컴포넌트 단위로 구현해도 전혀 문제가 없으나, vuex를 공부하기 위해 vuex로 공부해보았습니다.
   actions의 비동기 ajax 요청, mutations와 actions의 커밋, 디스패치 지점, API에서 불러온 데이터를 효율적으로 바인딩 하는 것에 대해 많은 고민을 했습니다.
-- 웹사이트에 처음 방문하게되면, 현재 사용자의 위/경도를 요청합니다.
+- 웹사이트에 최초 접속시 Geolocation API를 이용해 사용자의 위/경도 데이터를 받아옵니다.
   일반적으로 사용자의 위/경도는 가변적이지 않기 때문에, 로컬스토리지에 저장/관리 했습니다.
   Sidebar.vue 컴포넌트가 마운트되면 store.js 에서 로컬스토리지에 저장된 데이터를 이용해 ajax GET요청을 합니다.
-  ajax 라이브러리는 axios를 사용했습니다.
+  ajax 라이브러리는 axios를 사용했습니다.( JS 기본 API인 fetch API보다 호환성이 좋음 )
 
 #### Todolist app
 
