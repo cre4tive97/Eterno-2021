@@ -176,12 +176,15 @@ export default {
         }, 2000);
       }
     },
-    deleteTodolistAll(e) {
-      e.preventDefault();
-      this.savedTodolist = [];
+    deleteTodolistFromLocalStorage() {
       localStorage.removeItem("todolist");
       this.todolistEmptyCheck = true;
       this.deleteTodolistState = false;
+    },
+    deleteTodolistAll(e) {
+      e.preventDefault();
+      this.savedTodolist = [];
+      this.deleteTodolistFromLocalStorage();
     },
     deleteTodolistSelected(e) {
       e.preventDefault();
@@ -193,9 +196,7 @@ export default {
       localStorage.setItem("todolist", JSON.stringify(unselected));
       this.deleteTodolistState = false;
       if (unselected.length == 0) {
-        localStorage.removeItem("todolist");
-        this.todolistEmptyCheck = true;
-        this.deleteTodolistState = false;
+        this.deleteTodolistFromLocalStorage();
       }
     },
   },
