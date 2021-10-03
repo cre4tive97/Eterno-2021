@@ -8,7 +8,6 @@
 - [x] Consist of Vue3, Vuex@next, vue-router
 - [x] MacOS BigSur Style UI
 - [x] Variable apps
-- [x]
 - [ ] Responsive design
 
 ## 📱 Apps Features
