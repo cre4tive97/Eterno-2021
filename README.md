@@ -8,6 +8,7 @@
 - [x] Consist of Vue3, Vuex@next, vue-router
 - [x] MacOS BigSur Style UI
 - [x] Variable apps
+- [x]
 - [ ] Responsive design
 
 ## 📱 Apps Features
@@ -32,6 +33,10 @@
   일반적으로 사용자의 위/경도는 가변적이지 않기 때문에, 로컬스토리지에 저장/관리 했습니다.
   Sidebar.vue 컴포넌트가 마운트되면 store.js 에서 로컬스토리지에 저장된 데이터를 이용해 ajax GET요청을 합니다.
   ajax 라이브러리는 axios를 사용했습니다.( JS 기본 API인 fetch API보다 호환성이 좋음 )
+
+#### Applications randomly recommendation
+
+- 사이드바가 열릴 때마다 무작위 인덱스를 받아와 앱 데이터에 바인딩해 사용자에게 추천해줍니다.
 
 #### Todolist app
 
