@@ -24,20 +24,15 @@ export default {
       carouselContentCount: 0,
       carouselData: [
         {
-          title: "Welcome to my Website!",
-          content1: "This website is my portfolio.",
+          title: "Welcome to my website!",
+          content1: "This website is based on Vue3 ",
           content2: "I hope you get nice experiences!",
         },
         {
           title: "Click the apps!",
           content1:
             "You can open apps just with clicking app's icon like macOS environment.",
-          content2: "Apps will be able to update.",
-        },
-        {
-          title: "Welcome to my Website!",
-          content1: "This website is my portfolio.",
-          content2: "I hope you get nice experiences!",
+          content2: "Apps will be able to be updated.",
         },
       ],
     };
