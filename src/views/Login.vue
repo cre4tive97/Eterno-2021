@@ -11,7 +11,7 @@
       <div class="intro-login__imgbox">
         <img src="profile.png" alt="profile" />
       </div>
-      <h1 class="intro-login__username">Harry Borrison</h1>
+      <h1 class="intro-login__username">cre4tive97</h1>
       <button @click="login" class="intro-login__button">
         Login
       </button>

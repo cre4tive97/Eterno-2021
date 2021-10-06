@@ -44,7 +44,7 @@ export default {
 
 <style>
 .information {
-  font-family: "AppleSDGothicNeoH";
+  font-family: "AppleSDGothicNeoM";
   width: 100%;
   display: flex;
   flex-direction: column;

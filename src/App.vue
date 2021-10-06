@@ -43,6 +43,9 @@ html,
 body {
   margin: 0;
 }
+span {
+  font-family: "SDGothicNeoM";
+}
 h1 {
   margin: 0;
 }

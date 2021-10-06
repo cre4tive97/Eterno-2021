@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Intro from "../pages/Intro.vue";
-import Home from "../pages/Home.vue";
-import Login from "../pages/Login.vue";
+import Intro from "../views/Intro.vue";
+import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
 
 const routes = [
   {
