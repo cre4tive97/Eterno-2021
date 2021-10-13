@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       logo: logo,
-      informationLibrary: ["vuex4", "vue-router4", "axios"],
+      informationLibrary: ["vuex", "vue-router4", "axios"],
     };
   },
 };
@@ -44,7 +44,6 @@ export default {
 
 <style>
 .information {
-  font-family: "AppleSDGothicNeoM";
   width: 100%;
   display: flex;
   flex-direction: column;

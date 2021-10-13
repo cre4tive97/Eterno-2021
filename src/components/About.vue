@@ -56,7 +56,7 @@ p {
   margin-top: 1rem;
   color: white;
   width: 100%;
-  font-family: "AppleSDGothicNeoM";
+  
 }
 .about__content {
   display: flex;
@@ -135,6 +135,6 @@ p {
 .about__skills__text {
   font-weight: 400;
   font-size: 1rem;
-  font-family: "AppleSDGothicNeoM";
+ 
 }
 </style>
