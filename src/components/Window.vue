@@ -8,6 +8,7 @@
           <button class="btn btn-green"></button>
         </div>
       </div>
+      <Project v-if="i == 0" />
       <Safari v-if="i == 1" />
       <Contact v-if="i == 2" />
       <Information v-if="i == 3" />
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import Project from "./Project.vue";
 import Information from "./Information.vue";
 import Safari from "./Safari.vue";
 import Terminal from "./Terminal.vue";
@@ -36,6 +38,7 @@ export default {
     i: Number,
   },
   components: {
+    Project,
     Safari,
     Information,
     Terminal,
