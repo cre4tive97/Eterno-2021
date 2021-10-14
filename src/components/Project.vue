@@ -1,7 +1,18 @@
 <template>
   <div class="project">
     <div class="project__apps">
-      <img class="project__cocha" src="../images/cocha.png" alt="Cocha" />
+      <a
+        class="project__cocha"
+        href="https://github.com/cre4tive97/Cocha"
+        target="_blank"
+      >
+        <img
+          class="project__cocha__img"
+          src="../images/cocha.png"
+          alt="Cocha"
+        />
+        <span>Cocha</span>
+      </a>
     </div>
   </div>
 </template>
@@ -14,16 +25,30 @@ export default {
 
 <style>
 .project {
+  margin-top: 1rem;
+  height: 85%;
+  color: white;
   display: flex;
-  height: 80%;
-  margin: 0px 12px;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 .project__apps {
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
 }
+
 .project__cocha {
-  width: 80px;
-  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 12px;
+}
+.project__cocha:hover {
+  cursor: pointer;
+}
+.project__cocha__img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 4px;
 }
 </style>
