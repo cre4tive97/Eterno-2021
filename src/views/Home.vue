@@ -1,6 +1,5 @@
 <template>
   <div class="home-main" :style="{ backgroundImage: `url(${background})` }">
-    <Introduce v-if="localStorageCheck == null" />
     <div class="window-div" v-for="(a, i) in apps" :key="i">
       <Window
         v-show="windowState == i"
@@ -39,14 +38,12 @@
 
 <script>
 import background from "../images/background.jpg";
-import Introduce from "../components/Introduce.vue";
 import Window from "../components/Window.vue";
 import Sidebar from "../components/Sidebar.vue";
 
 export default {
   name: "Home",
   components: {
-    Introduce,
     Window,
     Sidebar,
   },
